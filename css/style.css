@@ -18,37 +18,38 @@ body{
 }
 
 .contenedorGeneral{
-  border: 1px solid red;
+  border: 1px solid silver;
   width: 70%;
   height: 100vh;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
   padding: 20px;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 
 .titulo{
+  flex: 100%;
   text-align: center;
   font-size: 1.3em;
   font-weight: bold;
-  padding: 10px 0;
-}
-hr{
-  color: silver;
-  margin-top: 5px;
 }
 
-.contenedorRegistros{
-  display: flex;
-  gap: 20px;
+p{
+  margin: 0;
+  padding: 0;
+}
+
+hr{
+  color: silver;
+  margin: 5px 0;
 }
 
 .formularioIngreso{
   background: yellow;
-  flex: 1;
+  flex: 40%;
 }
 .listadoEmpleados{
-  background-color: chartreuse;
-  flex: 1;
+  background-color: rgb(176, 247, 105);
+  flex: 50%;
 }
