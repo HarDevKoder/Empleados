@@ -43,6 +43,7 @@ const instanciarEmpleado = (codigo, nombre, apellido, fechaIngreso, cargo) => {
 
 // Funcion para generar card para mostrar datos de empleado
 const generarTarjeta = (elemento) => {
+  // Creo la tarjeta y le asigno estilos
   const tarjeta = document.createElement('div');
   tarjeta.style.width = '200px';
   tarjeta.style.height = 'auto';
@@ -54,11 +55,30 @@ const generarTarjeta = (elemento) => {
   tarjeta.style.color = 'azure';
   tarjeta.style.padding = '10px';
   tarjeta.style.display = 'flex';
-  tarjeta.style.justifyContent = 'center';
+  tarjeta.style.flexDirection = 'column';
+  tarjeta.style.justifyContent = 'spaceAround';
+  tarjeta.style.alignItems = 'center';
+  tarjeta.style.gap = '10px';
+
+  //  Creo la Imagen y asigno estilos y atributos 
+  const imagen = document.createElement('img');
+  imagen.src='../imagenes/user.png';
+  imagen.style.width='50px';
+  imagen.style.height='50px';
+
+
+  // Creo contenedor del texto y lo agrego
+  const texto = document.createElement('div');
+  texto.innerHTML = elemento;
+
+  // Agrego imagen y texto a la tarjeta
+  tarjeta.append(imagen,texto);
+
+  // Agrego tarjeta al div contenedor general
   spanEmpleadosRegistrados.append(tarjeta);
-  tarjeta.innerHTML = elemento;
 }
 
+// Función que Imprime datos del empleado en la tarjeta
 const imprimirEmpleado = () => {
   for (x of empleadosRegistradosArr) {
     let elemento = `Codigo: ${x.codigo}<br>
