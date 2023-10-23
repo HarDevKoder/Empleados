@@ -12,6 +12,7 @@ let nombre, apellido, fechaIngreso, cargo;
 let codigo = 0;
 let valoresEmpleado = [];
 let empleadosRegistradosArr = [];
+let isTextoBtnMostrar = true;
 
 // ---------------------------------------------------------------------------------------------
 // FUNCIONES
@@ -92,6 +93,14 @@ const imprimirEmpleado = () => {
   }
 }
 
+// Función que cambia el texto del boton mostrar (mostrar/ocultar)
+const cambiarTextoBtnMostrar = () =>{
+  let textoBtnMostrar =(btnMostrar.textContent==='Mostrar')?'Ocultar':'Mostrar';
+  btnMostrar.textContent = textoBtnMostrar;
+}
+
+
+
 // ---------------------------------------------------------------------------------------------
 // PROGRAMA PRINCIPAL
 // ---------------------------------------------------------------------------------------------
@@ -121,6 +130,7 @@ btnRegistrar.addEventListener('click', () => {
 })
 
 btnMostrar.addEventListener('click', () => {
+  cambiarTextoBtnMostrar();
   // Imprimo datos de empleado en tarjeta
   imprimirEmpleado();
 
