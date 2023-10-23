@@ -8,7 +8,8 @@ const btnMostrar = document.getElementById('btnMostrar');
 // ---------------------------------------------------------------------------------------------
 // VARIABLES GLOBALES
 // ---------------------------------------------------------------------------------------------
-let codigo, nombre, apellido, fechaIngreso, cargo;
+let nombre, apellido, fechaIngreso, cargo;
+let codigo = 0;
 let valoresEmpleado = [];
 let empleadosRegistradosArr = [];
 
@@ -18,7 +19,7 @@ let empleadosRegistradosArr = [];
 // Función que extrae los valores de los inputs
 const extraerValoresInputs = () => {
   valoresEmpleado = [];
-  for (let i = 1; i <= 5; i++) {
+  for (let i = 1; i <= 4; i++) {
     const input = document.getElementById(`input${i}`);
     let valor = input.value;
     valoresEmpleado.push(valor);
@@ -67,8 +68,9 @@ const generarTarjeta = (elemento) => {
   imagen.style.height='50px';
 
 
-  // Creo contenedor del texto y lo agrego
+  // Creo contenedor y agrego texto
   const texto = document.createElement('div');
+  texto.style.lineHeight='1.2em';
   texto.innerHTML = elemento;
 
   // Agrego imagen y texto a la tarjeta
@@ -81,7 +83,7 @@ const generarTarjeta = (elemento) => {
 // Función que Imprime datos del empleado en la tarjeta
 const imprimirEmpleado = () => {
   for (x of empleadosRegistradosArr) {
-    let elemento = `Codigo: ${x.codigo}<br>
+    let elemento = `Codigo: E00${x.codigo}<br>
                     Nombre: ${x.nombre}<br>
                     Apellido: ${x.apellido}<br>
                     Ingreso: ${x.fechaIngreso}<br>
@@ -106,7 +108,8 @@ btnRegistrar.addEventListener('click', () => {
     alert('llena todos los campos!');
   }else{
     // Destructuro array con datos para instanciar objetos
-    [codigo, nombre, apellido, fechaIngreso, cargo] = extraerValoresInputs();
+    [nombre, apellido, fechaIngreso, cargo] = extraerValoresInputs();
+    codigo+=1;
 
     // Instancio empleados y los guardo en array (empleadosRegistradosArr)
     instanciarEmpleado(codigo, nombre, apellido, fechaIngreso, cargo);

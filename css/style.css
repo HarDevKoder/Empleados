@@ -53,7 +53,6 @@ hr{
   padding: 20px;
   color: black;
   font-weight: bold;
-  /* background-color: yellow; */
 }
 
 .contenedorInputs{
@@ -87,7 +86,6 @@ button:hover{
 
 .listadoEmpleados{
   flex: 50%;
-  /* background-color: aquamarine; */
 }
 
 .spanEmpleadosRegistrados{
