@@ -17,32 +17,35 @@
       <hr />
     </div>
     <div class="formularioIngreso">
-      <div class="contenedorInputs">
+      <div class="contenedorInputs" id="contenedorInputs">
         <p>
           <label for="codigo">Codigo: </label><br>
-          <input type="text">
+          <input type="text" id="input1" autocomplete="off">
         </p>
         <p>
           <label for="nombre">Nombre: </label><br>
-          <input type="text">
+          <input type="text" id="input2" autocomplete="off">
         </p>
         <p>
           <label for="apellido">Apellido: </label><br>
-          <input type="text">
+          <input type="text" id="input3" autocomplete="off">
         </p>
         <p>
-          <label for="fechaNacimiento">Fecha Nacimiento: </label><br>
-          <input type="text">
+          <label for="fechaIngreso">Fecha Ingreso: </label><br>
+          <input type="text" id="input4" autocomplete="off">
         </p>
         <p>
           <label for="cargo">Cargo: </label><br>
-          <input type="text">
+          <input type="text" id="input5" autocomplete="off">
         </p>
-        <button>Registrar</button>
+        <div class="contenedorBotones" id="contenedorBotones">
+          <button id="btnRegistrar">Registrar</button>
+          <button id="btnMostrar">Mostrar</button>
+        </div>
       </div>
     </div>
     <div class="listadoEmpleados">
-      LISTADO EMPLEADOS
+      <span class="spanEmpleadosRegistrados" id="spanEmpleadosRegistrados"></span>
     </div>
   </div>
 
