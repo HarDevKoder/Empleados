@@ -2,6 +2,7 @@
 // REFERENCIA DE ELEMENTOS DEL DOM
 // ---------------------------------------------------------------------------------------------
 const spanEmpleadosRegistrados = document.getElementById('spanEmpleadosRegistrados');
+const listadoEmpleados = document.getElementById('listadoEmpleados');
 const btnRegistrar = document.getElementById('btnRegistrar');
 const btnMostrar = document.getElementById('btnMostrar');
 
@@ -64,18 +65,18 @@ const generarTarjeta = (elemento) => {
 
   //  Creo la Imagen y asigno estilos y atributos 
   const imagen = document.createElement('img');
-  imagen.src='../imagenes/user.png';
-  imagen.style.width='50px';
-  imagen.style.height='50px';
+  imagen.src = '../imagenes/user.png';
+  imagen.style.width = '50px';
+  imagen.style.height = '50px';
 
 
   // Creo contenedor y agrego texto
   const texto = document.createElement('div');
-  texto.style.lineHeight='1.2em';
+  texto.style.lineHeight = '1.2em';
   texto.innerHTML = elemento;
 
   // Agrego imagen y texto a la tarjeta
-  tarjeta.append(imagen,texto);
+  tarjeta.append(imagen, texto);
 
   // Agrego tarjeta al div contenedor general
   spanEmpleadosRegistrados.append(tarjeta);
@@ -94,12 +95,11 @@ const imprimirEmpleado = () => {
 }
 
 // Función que cambia el texto del boton mostrar (mostrar/ocultar)
-const cambiarTextoBtnMostrar = () =>{
-  let textoBtnMostrar =(btnMostrar.textContent==='Mostrar')?'Ocultar':'Mostrar';
+const cambiarTextoBtnMostrar = () => {
+  let textoBtnMostrar = (btnMostrar.textContent === 'Mostrar') ? 'Ocultar' : 'Mostrar';
   btnMostrar.textContent = textoBtnMostrar;
+  return textoBtnMostrar;
 }
-
-
 
 // ---------------------------------------------------------------------------------------------
 // PROGRAMA PRINCIPAL
@@ -113,29 +113,35 @@ btnRegistrar.addEventListener('click', () => {
   let campos = extraerValoresInputs();
 
   // Evaluo si algno esta vacio y muestro mensaje
-  if(campos.some(campo=>campo==='')){
+  if (campos.some(campo => campo === '')) {
     alert('llena todos los campos!');
-  }else{
+  } else {
     // Destructuro array con datos para instanciar objetos
     [nombre, apellido, fechaIngreso, cargo] = extraerValoresInputs();
-    codigo+=1;
+    codigo++;
 
     // Instancio empleados y los guardo en array (empleadosRegistradosArr)
     instanciarEmpleado(codigo, nombre, apellido, fechaIngreso, cargo);
-  
+
     // Limpio los inputs
     document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
   }
-
 })
 
 btnMostrar.addEventListener('click', () => {
-  cambiarTextoBtnMostrar();
-  // Imprimo datos de empleado en tarjeta
-  imprimirEmpleado();
+  // Verifico el texto del boton
+  let textoBoton = cambiarTextoBtnMostrar();
 
-  // Limpio array para evitar tarjetas duplicadas
-  empleadosRegistradosArr = [];
+  if (textoBoton === 'Mostrar') {
+    listadoEmpleados.style.visibility = 'hidden';
+  } else {
+    // Imprimo datos de empleado en tarjeta
+    imprimirEmpleado();
+
+    // Muestro el contenedor de resultados
+    listadoEmpleados.style.visibility = 'visible';
+
+    // Limpio array para evitar tarjetas duplicadas
+    empleadosRegistradosArr = [];
+  }
 })
-
-
