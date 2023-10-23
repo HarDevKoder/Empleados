@@ -9,15 +9,15 @@
   src: url("../fuentes/arial.ttf");
 }
 
-html{
+html {
   font-family: miFuente;
 }
 
-body{
+body {
   background-color: azure;
 }
 
-.contenedorGeneral{
+.contenedorGeneral {
   border: 1px solid silver;
   width: 70%;
   height: auto;
@@ -28,24 +28,24 @@ body{
   align-content: flex-start;
 }
 
-.titulo{
+.titulo {
   flex: 100%;
   text-align: center;
   font-size: 1.3em;
   font-weight: bold;
 }
 
-p{
+p {
   margin: 0;
   padding: 0;
 }
 
-hr{
+hr {
   color: silver;
   margin: 5px 0;
 }
 
-.formularioIngreso{
+.formularioIngreso {
   flex: 40%;
   display: flex;
   align-items: flex-start;
@@ -55,7 +55,7 @@ hr{
   font-weight: bold;
 }
 
-.contenedorInputs{
+.contenedorInputs {
   display: grid;
   place-items: center;
   border: 1px solid silver;
@@ -64,7 +64,7 @@ hr{
   background: rgb(135, 189, 252);
 }
 
-input{
+input {
   margin-bottom: 12px;
   text-align: center;
   font-size: 1.1em;
@@ -72,7 +72,7 @@ input{
   padding: 3px;
 }
 
-button{
+button {
   padding: 6px;
   border-radius: 5px;
   font-size: 1.2em;
@@ -80,16 +80,44 @@ button{
   cursor: pointer;
 }
 
-button:hover{
-  background-color:#d4d3d3 ;
+button:hover {
+  background-color: #d4d3d3;
 }
 
-.listadoEmpleados{
+.listadoEmpleados {
   flex: 50%;
 }
 
-.spanEmpleadosRegistrados{
+.spanEmpleadosRegistrados {
   display: flex;
   flex-wrap: wrap;
-  justify-content:start;
+  justify-content: start;
+}
+
+/* Versión Mobile */
+
+@media (width<=600px) {
+  .contenedorGeneral {
+    width: 100%;
+    padding: 5px;
+    gap: 10px;
+  }
+
+  .formularioIngreso {
+    padding: 0px;
+  }
+
+  .spanEmpleadosRegistrados {
+    display: flex;
+    justify-content: center;
+  }
+
+  .titulo {
+    padding: 15px;
+  }
+
+  input {
+    font-size: 1.3em;
+    padding: 5px;
+  }
 }
