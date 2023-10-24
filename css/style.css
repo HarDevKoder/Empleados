@@ -93,31 +93,30 @@ button:hover {
   flex-wrap: wrap;
   justify-content: start;
 }
-
+/* --------------------------------------------------------------------------------------------- */
 /* Versión Mobile */
+/* --------------------------------------------------------------------------------------------- */
 
 @media (width<=600px) {
   .contenedorGeneral {
     width: 100%;
     padding: 5px;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin-top: 10px;
   }
 
-  .formularioIngreso {
-    padding: 0px;
+  .listadoEmpleados {
+    flex: 50%;
   }
-
+  
   .spanEmpleadosRegistrados {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
   }
 
-  .titulo {
-    padding: 15px;
-  }
-
-  input {
-    font-size: 1.3em;
-    padding: 5px;
+  .spanEmpleadosRegistrados > *{
+    flex-basis: 48.5%;
   }
 }
