@@ -12,6 +12,7 @@ const btnMostrar = document.getElementById('btnMostrar');
 let nombre, apellido, fechaIngreso, cargo;
 let codigo = 0;
 let valoresEmpleado = [];
+let campos = [];
 let empleadosRegistradosArr = [];
 let isTextoBtnMostrar = true;
 
@@ -107,17 +108,17 @@ const cambiarTextoBtnMostrar = () => {
 btnRegistrar.addEventListener('click', () => {
 
   // Limpio array para evitar tarjetas duplicadas
-  empleadosRegistradosArr = [];
+  // empleadosRegistradosArr = [];
 
   // obtengo el array con los valores de la instancia
   let campos = extraerValoresInputs();
-
-  // Evaluo si algno esta vacio y muestro mensaje
+  
+  // Evaluo si alguno esta vacio y muestro mensaje
   if (campos.some(campo => campo === '')) {
     alert('llena todos los campos!');
   } else {
-    // Destructuro array con datos para instanciar objetos
-    [nombre, apellido, fechaIngreso, cargo] = extraerValoresInputs();
+    // Destructuro array para instanciar objetos
+    [nombre, apellido, fechaIngreso, cargo] = campos;
     codigo++;
 
     // Instancio empleados y los guardo en array (empleadosRegistradosArr)
