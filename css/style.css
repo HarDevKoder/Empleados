@@ -97,7 +97,7 @@ button:hover {
 /* Versión Mobile */
 /* --------------------------------------------------------------------------------------------- */
 
-@media (width<=600px) {
+@media (max-width: 600px) {
   .contenedorGeneral {
     width: 100%;
     padding: 5px;
@@ -110,13 +110,14 @@ button:hover {
   .listadoEmpleados {
     flex: 50%;
   }
-  
+
   .spanEmpleadosRegistrados {
     display: flex;
     flex-wrap: wrap;
   }
 
-  .spanEmpleadosRegistrados > *{
+  .spanEmpleadosRegistrados > * {
     flex-basis: 48.5%;
+    min-width: 170px;
   }
 }
