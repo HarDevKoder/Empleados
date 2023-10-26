@@ -102,33 +102,70 @@ const cambiarTextoBtnMostrar = () => {
   return textoBtnMostrar;
 }
 
+// Función que valida datos numericos y formato de fecha
+const validaInputs = (campos) => {
+  if (campos.some(campo => campo === '')) {
+    alert('llena todos los campos!');
+  } else {
+    let campoFecha = campos.splice(2, 1)[0];
+    let regex = /[\d]/g;
+    if (campos.some(campo => regex.test(campo))) {
+      alert('El input contiene números!');
+    } else {
+      let regexFecha = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20)\d\d$/;
+      if (regexFecha.test(campoFecha)) {
+        let partesFecha = campoFecha.split('/');
+        let dia = parseInt(partesFecha[0]);
+        let mes = parseInt(partesFecha[1]);
+        let año = parseInt(partesFecha[2]);
+        if (mes === 2 && dia > 29) {
+          alert('Febrero no puede tener más de 29 días!');
+        } else if (mes === 2 && dia === 29 && !(año % 4 === 0 && (año % 100 !== 0 || año % 400 === 0))) {
+          alert('Febrero solo puede tener 29 días en un año bisiesto!');
+        } else {
+          alert('Registro Exitoso!');
+          campos.splice(2, 0, campoFecha);
+          let res = campos;
+          return res;
+        }
+      } else {
+        alert('Fecha no valida!');
+      }
+    }
+  }
+}
+
 // ---------------------------------------------------------------------------------------------
 // PROGRAMA PRINCIPAL
 // ---------------------------------------------------------------------------------------------
+
+// Botón para realizar el regstro de los Empleados
 btnRegistrar.addEventListener('click', () => {
 
   // Limpio array para evitar tarjetas duplicadas
   // empleadosRegistradosArr = [];
 
-  // obtengo el array con los valores de la instancia
-  let campos = extraerValoresInputs();
-  
-  // Evaluo si alguno esta vacio y muestro mensaje
-  if (campos.some(campo => campo === '')) {
-    alert('llena todos los campos!');
-  } else {
-    // Destructuro array para instanciar objetos
-    [nombre, apellido, fechaIngreso, cargo] = campos;
-    codigo++;
+  // obtengo el array con los valores de los inputs sin validar
+  campos = extraerValoresInputs();
 
-    // Instancio empleados y los guardo en array (empleadosRegistradosArr)
-    instanciarEmpleado(codigo, nombre, apellido, fechaIngreso, cargo);
+  // Valido vacíos, valores numericos y formato de fecha ingresados
+  campos = validaInputs(campos); //Campos validados
 
-    // Limpio los inputs
-    document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
-  }
+  // Destructuro array para instanciar objetos
+  [nombre, apellido, fechaIngreso, cargo] = campos;
+
+  // Genero consecutivo automatico para codigo
+  codigo++;
+
+  // Instancio empleados y los guardo en array (empleadosRegistradosArr)
+  instanciarEmpleado(codigo, nombre, apellido, fechaIngreso, cargo);
+
+  // Limpio los inputs
+  document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
+
 })
 
+// Botón para mostrar/Ocultar Resultados
 btnMostrar.addEventListener('click', () => {
   // Verifico el texto del boton
   let textoBoton = cambiarTextoBtnMostrar();
